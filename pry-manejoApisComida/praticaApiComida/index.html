@@ -193,39 +193,32 @@
 
 
         <div class="plates-container m-5 bg-danger ">
-                <form class="row py-3 px-5">
+                <form class="row py-3 px-5" id="form-busqueda">
 
                   <div class="input-group mb-3">
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" id="btn-busqueda">
                       <i class="fas fa-search"></i>
                     </button>
-                <button
-                  type="button"
-                  class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
-                  data-mdb-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span >filtrar</span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#" value="Side">Acompañamiento</a></li>
-                  <li><a class="dropdown-item" href="#" value="Seafood">Comida de mar</a></li>
-                  <li><a class="dropdown-item" href="#" value="Beaf">Carne de res</a></li>
-                  <li><a class="dropdown-item" href="#" value="Vegetarian">Comida vegetariana</a></li>
-                  <li><a class="dropdown-item" href="#" value="Pasta">Pasta</a></li>
-                  <li><a class="dropdown-item" href="#" value="Pork">Carne de cerdo</a></li>
-                  <li><a class="dropdown-item" href="#" value="Vegetarian">Comida vegetariana</a></li>
-                  <li><a class="dropdown-item" href="#" value="Chicken">Pollo</a></li>
-                  <li><a class="dropdown-item" href="#" value="Lamb">Cordero</a></li>
-                </ul>
 
-                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" />
+                  <select class="browser-default btn btn-outline-primary custom-select" id="menu-filtrar">
+                    <option selected disabled value="">Open this food menu</option>
+                    <option value="Side">Acompañamiento   </option>
+                    <option value="Seafood">Comida de mar </option>
+                    <option value="Beef">Carne de res     </option>
+                    <option value="Vegetarian">Comida vegetariana</option>
+                    <option value="Pasta">Pasta           </option>
+                    <option value="Pork">Carne de cerdo   </option>
+                    <option value="Chicken">Pollo         </option>
+                    <option value="Vegetarian">Comida vegetariana</option>
+                    <option value="Lamb">Cordero          </option>
+                  </select>             
+                </ul>
+                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" id="ipt-busqueda"/>
               </div>
               </form>
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 mt-3 px-3" id="plate-card_container">
-                   
-                    
+   
                 </div>
         </div>
     </main>

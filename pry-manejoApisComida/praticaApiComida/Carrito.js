@@ -6,6 +6,7 @@ class CarritoManagement{
     }
 
     añadirAlCarrito(index){
+        this.carrito = []
         let añadirPlato = administrarPlatos.platos[index]; 
         this.carrito.push(añadirPlato)
         console.log(this.carrito);

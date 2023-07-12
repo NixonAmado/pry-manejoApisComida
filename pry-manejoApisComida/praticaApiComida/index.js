@@ -4,9 +4,17 @@ import { CarritoManagement } from './Carrito.js';
 let administrarCarrito = new CarritoManagement();
 let administrarPlatos = new PlateManagement();
 
-async function fetchData(filtro='https://www.themealdb.com/api/json/v1/1/search.php?s='){
+let formBuscar= document.getElementById('form-busqueda').
+addEventListener("click", function(event){
+  event.preventDefault()
+});
+
+let btnBuscar = document.getElementById('btn-busqueda').addEventListener('click',busqueda);
+
+
+async function fetchData(url="https://www.themealdb.com/api/json/v1/1/search.php?s="){
     try{
-        let data = await fetch(`${filtro}`);
+        let data = await fetch(`${url}`);
         let response = await data.json();
         return response;
     }
@@ -15,8 +23,8 @@ async function fetchData(filtro='https://www.themealdb.com/api/json/v1/1/search.
     }
 }
 
-async function GuardarApi(){
-    let data = await fetchData();
+async function GuardarApi(url){
+    let data = await fetchData(url);
     data.meals.forEach(element => {
         let plato = new Plato(element);
         administrarPlatos.añadirPlato(plato);
@@ -60,6 +68,29 @@ function agregarEventos(){
         btnAñadiAlCarrito[index].addEventListener("click", function() {
         administrarCarrito.añadirAlCarrito(index);
     })
+  }
+}
+
+async function busqueda(){
+  let menuFiltrar = document.getElementById('menu-filtrar');
+  let iptBusqueda = document.getElementById('ipt-busqueda');
+
+  if(menuFiltrar.value!="Open this food menu"){
+    if (menuFiltrar.value && iptBusqueda.value){
+      let categoria = await(await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${menuFiltrar.value}`)).json();
+      for(let i of categoria["meals"]) {
+        if(categoria.strMeal===iptBusqueda.value){
+          GuardarApi(`https://www.themealdb.com/api/json/v1/1/search.php?s=${categoria.strMeal}`)
+          return
+       }
+      }   
+    }else if(menuFiltrar.value){
+      GuardarApi(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${menuFiltrar.value}`);
+    }
+    
+    else{
+      GuardarApi(`https://www.themealdb.com/api/json/v1/1/search.php?s=${iptBusqueda.value}`);
+    } 
   }
 }
 
