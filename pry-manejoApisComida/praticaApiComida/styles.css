@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:#eee;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    width: 20%;
+}
+
+li{
+    width: fit-content;
+}
+
